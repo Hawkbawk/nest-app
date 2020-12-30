@@ -10,8 +10,9 @@ RUN mkdir -p /home/node/.vscode-server/extensions \
   /home/node/.vscode-server \
   /home/node/.vscode-server-insiders
 
-# Vim is nice for quick changes and also as a git commit editor.
-RUN apt-get update && apt-get install vim -y
+# Vim is nice for quick changes and also as a git commit editor. Less is useful
+# for viewing git log output and for other stuff.
+RUN apt-get update && apt-get install vim less -y
 
 USER node
 
