@@ -1,0 +1,9 @@
+version: '3'
+services:
+  web:
+    volumes:
+      - vscode-extensions:/home/$USERNAME/.vscode-server/extensions
+      - vscode-extensions-insider:/home/$USERNAME/.vscode-server-insider/extensions
+volumes:
+  vscode-extensions:
+  vscode-extensions-insider:

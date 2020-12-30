@@ -1,0 +1,23 @@
+FROM node:14
+
+ARG WORKDIR=/usr/src/app
+
+# Add directory for VSCode extensions so that we can create a volume and avoid
+# a reinstall on every build.
+RUN mkdir -p /home/node/.vscode-server/extensions \
+  /home/node/.vscode-server-insiders/extensions \
+  && chown -R node \
+  /home/node/.vscode-server \
+  /home/node/.vscode-server-insiders
+
+# Vim is nice for quick changes and also as a git commit editor.
+RUN apt-get update && apt-get install vim -y
+
+USER node
+
+COPY --chown=node:node . ${WORKDIR}
+
+WORKDIR ${WORKDIR}
+
+RUN ["yarn"]
+CMD ["yarn", "start:dev"]
