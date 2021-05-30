@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Cat } from '../interfaces/cats.interface';
 
 @Injectable()
-export class AppService {
+export class CatsService {
   private readonly cats: Cat[] = [];
 
   getHello(): string {
